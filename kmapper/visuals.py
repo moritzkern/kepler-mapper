@@ -271,6 +271,7 @@ def format_mapper_data(
         }
 
         json_dict["nodes"].append(n)
+    
     for i, (node_id, linked_node_ids) in enumerate(graph["links"].items()):
         for linked_node_id in linked_node_ids:
             json_dict["links"].append(
@@ -278,6 +279,7 @@ def format_mapper_data(
                     "source": node_id_to_num[node_id],
                     "target": node_id_to_num[linked_node_id],
                     "width": _size_link_width(graph, node_id, linked_node_id),
+                    "value": _size_link_width(graph, node_id, linked_node_id),
                 }
             )
     return json_dict
@@ -493,7 +495,7 @@ def _node_color_function(member_ids, color_values):
 
 
 def _size_node(member_ids):
-    return int(np.log(len(member_ids) + 1) + 1)
+    return int(2*np.log(len(member_ids) + 1) + 1)
 
 
 def _type_node():
@@ -501,4 +503,8 @@ def _type_node():
 
 
 def _size_link_width(graph, node_id, linked_node_id):
-    return 1
+    l = len(set(graph["nodes"][node_id]) & set(graph["nodes"][linked_node_id]))
+    print(l)
+    # return 3
+    return l
+    # return 1

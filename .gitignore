@@ -60,6 +60,7 @@ dist
 _modules
 .tox/
 .python-version
+.venv
 
 # Kepler-Mapper specific things
 mapper_visualization_output.html

@@ -139,8 +139,10 @@ var link = g.selectAll(".link")
             .data(graph.links)
             .enter().append("line")
               .attr("class", "link")
-              .style("stroke-width", function(d) { return d.w * nominal_stroke; })
-              .style("stroke-width", function(d) { return d.w * nominal_stroke; })
+              .style("stroke-width", function(d) { return 0.1*d.value*nominal_stroke; })
+//              .style("stroke", function(d) { return color(d.value/60); });
+//              .style("stroke-width", function(d) { return d.w * nominal_stroke; })
+//              .style("stroke-width", function(d) { return d.w * nominal_stroke; })
 
 
 var node = g.selectAll(".node")
